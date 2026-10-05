@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "web-copy-lite"
+version = "1.0.0"
+description = "Public website offline archiver with a Python CLI and PHP interface"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = ["beautifulsoup4>=4.12,<5", "tinycss2>=1.3,<2"]
+
+[project.optional-dependencies]
+render = ["playwright>=1.48,<2"]
+
+[project.scripts]
+webcopy = "webcopy.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["webcopy*"]

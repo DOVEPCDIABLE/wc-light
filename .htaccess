@@ -1,0 +1,11 @@
+# Defense in depth for local XAMPP checkouts. For hosted deployments, expose
+# only web/ as the document root; not all servers honor .htaccess.
+Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule (^|/)\. - [F,L]
+RewriteRule ^(?:webcopy|tests|output|build|dist)(?:/|$) - [F,L]
+</IfModule>
+<FilesMatch "\.(?:py|toml|ini|env|log|json)$">
+Require all denied
+</FilesMatch>
